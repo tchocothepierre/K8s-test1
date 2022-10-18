@@ -1,0 +1,31 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job
+spec:
+  replicas: 2
+  selector:                   # tells the controller which pods to watch/belong to
+    matchLabels:
+      app: job
+  template:
+    metadata:
+      labels:
+        app: job
+    spec:
+      containers:
+        - name: job
+          image: tchocothepierre/pipeline-demo
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory:  "100Mi"
+              cpu: "500m"
+            limits:
+              memory: "200Mi"
+              cpu:  "1000m"  
+          ports:
+            - containerPort: 80
+      tolerations:
+          - effect: NoSchedule
+            operator: Exists
