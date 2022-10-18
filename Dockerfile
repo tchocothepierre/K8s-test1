@@ -6,9 +6,6 @@ RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|
 RUN yum install -y httpd \
    zip\
    unzip
-RUN firewall-cmd --permanent --add-service=http -y
-RUN firewall-cmd --permanent --add-service=https -y
-RUN firewall-cmd --reload -y
 RUN systemctl start httpd 
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page284/marker.zip /var/www/html/
 WORKDIR /var/www/html/
