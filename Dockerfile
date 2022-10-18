@@ -9,7 +9,7 @@ RUN yum install -y httpd \
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page284/marker.zip /var/www/html/
 WORKDIR /var/www/html/
 RUN unzip marker.zip
-RUN cp -rvf shine/* .
-RUN rm -rf shine shine.zip
+RUN cp -rvf marker/* .
+RUN rm -rf marker marker.zip
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 EXPOSE 80  
